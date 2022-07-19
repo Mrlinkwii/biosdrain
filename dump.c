@@ -182,5 +182,5 @@ static u32 dump_mec_func()
 	// Mechacon version is only 4 bytes long
 
 	u32 _unused;
-	return !sceCdMV((u8*)dump_shared_buffer[0], &_unused);
+	return !sceCdMV((u8*)dump_shared_buffer, &_unused);
 }

@@ -1,5 +1,5 @@
 EE_BIN ?= biosdrain.elf
-EE_OBJS = biosdrain.o biosdrain_tex.o OSDInit.o sysman_rpc.o ui/menu.o dump.o
+EE_OBJS = biosdrain.o biosdrain_tex.o OSDInit.o sysman_rpc.o ui/menu.o dump.o modelname.o
 IRX_OBJS = irx/usbmass_bd_irx.o irx/usbd_irx.o irx/bdm_irx.o irx/bdmfs_vfat_irx.o irx/sysman_irx.o
 # Bin2c objects that will be linked in
 EE_OBJS += $(IRX_OBJS)
@@ -11,10 +11,6 @@ GIT_VERSION := "$(shell git describe --abbrev=4 --dirty --always --tags)"
 EE_CFLAGS = -I$(shell pwd) -Werror -DGIT_VERSION="\"$(GIT_VERSION)\""
 
 IRX_C_FILES = usbmass_bd_irx.c bdm_irx.c bdmfs_vfat_irx.c usbd_irx.c sysman_irx.c
-
-ifdef NO_RESET_IOP_WHEN_USB
-EE_CFLAGS += -DNO_RESET_IOP_WHEN_USB
-endif
 
 all: sysman_irx $(EE_BIN)
 

@@ -53,7 +53,6 @@ t_SysmanHardwareInfo g_hardwareInfo;
 void LoadSystemInformation()
 {
 	SysmanGetHardwareInfo(&g_hardwareInfo);
-
 	menu_status("BOOT ROM Info:\n");
 	menu_status("- ROM0 exists? %s\n", g_hardwareInfo.ROMs[0].IsExists ? "Yes" : "No");
 	if (g_hardwareInfo.ROMs[0].IsExists)
@@ -206,7 +205,7 @@ int main(void)
 	dump_init(use_usb_dir);
 
 	dump_exec();
-
+	dump_cleanup();
 exit_main:
 	menu_status("Finished everything.\n");
 	SleepThread();
